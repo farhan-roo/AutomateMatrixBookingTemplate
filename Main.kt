@@ -209,7 +209,10 @@ fun setCommonHeaders(connection: HttpURLConnection, sessionCookie: String) {
 fun notifyTelegram(message: String) {
     val message = "$currentDate $message"
     println("notifyTelegram: $message")
-    val telegramBotToken = System.getenv("AUTOBOOKING_TELEGRAM_BOT_TOKEN") ?: return
+    val telegramBotToken = System.getenv("AUTOBOOKING_TELEGRAM_BOT_TOKEN")
+    if telegramBotToken.isNullOrEmpty() {
+        return
+    }
 
     val telegramChatId = System.getenv("AUTOBOOKING_TELEGRAM_CHAT_ID")?.takeIf { it.isNullOrEmpty().not() } ?: error("Error: Missing env. Please set repository secret AUTOBOOKING_TELEGRAM_CHAT_ID since bot token is already set")
     val telegramUrl = "https://api.telegram.org/bot$telegramBotToken/sendMessage"
