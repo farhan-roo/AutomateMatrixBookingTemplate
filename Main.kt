@@ -210,7 +210,7 @@ fun notifyTelegram(message: String) {
     val message = "$currentDate $message"
     println("notifyTelegram: $message")
     val telegramBotToken = System.getenv("AUTOBOOKING_TELEGRAM_BOT_TOKEN")
-    if telegramBotToken.isNullOrEmpty() {
+    if (telegramBotToken.isNullOrEmpty()) {
         return
     }
 
