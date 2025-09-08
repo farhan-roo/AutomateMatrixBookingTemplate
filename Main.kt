@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
     runCatching {
         println("Script execution started at ${SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Date())}")
 
-        val moveAhead = if(args.contains("createbooking")) 7 else 0
+        val moveAhead = if(args.contains("createbooking")) 8 else 0
 //        currentDate = "2025-03-21"
         currentDate = dateFormat.format( Calendar.getInstance()
             .apply { time = Date(); add(Calendar.DAY_OF_MONTH, moveAhead) }.time)
